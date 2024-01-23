@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para">Loading...</p>
+    <button id="btn">reload</button>
+    <script>
+        var p=document.getElementById("para");
+        var b=document.getElementById("btn");
+        async function fdata(){
+            try{
+                const response=await fetch("https://baconipsum.com/api/?type=all");
+                const data= await response.json();
+                p.textContent=data;
+            }
+            catch(error){
+                p.textContent=error;
+            }
+                
+        }
+        fdata();
+        
+        
+        b.addEventListener("click",function(){
+            
+            location.reload();
+            
+        })
+    </script>
+</body>
+</html>
